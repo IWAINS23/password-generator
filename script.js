@@ -107,31 +107,31 @@ if(length <= 65){
   alert('password length must be less than or equal to 64 charecters =')
 }
 
-let hasSpecialChars = confirm('Click Ok to confim if you want your password to include special charecters')
+let hasSpecialCharecters = confirm('Click Ok to confim if you want your password to include special charecters')
 
-let hasNumbers = confirm('Click Ok to confim if you want your password to include numbers')
+let hasNumericCharecters = confirm('Click Ok to confim if you want your password to include numbers')
 
-let hasLowerCaseChars = confirm('Click Ok to confim if you want your password to lower case letters')
+let hasLowerCaseCharecters = confirm('Click Ok to confim if you want your password to lower case letters')
 
-let hasUpperCaseChars = confirm('Click Ok to confim if you want your password to upper case letters')
+let hasUpperCaseCharecters = confirm('Click Ok to confim if you want your password to upper case letters')
 
-if(hasSpecialChars === false &&
-  hasNumbers === false &&
-  hasLowerCaseChars === false &&
-  hasUpperCaseChars === false ) {
+if(hasSpecialCharecters === false &&
+  hasNumericCharecters === false &&
+  hasLowerCaseCharecters === false &&
+  hasUpperCaseCharecters === false ) {
     alert('Please select at least one charecter type');
     return;
   }
 
 let passwordOptions = {
   length: length,
-  hasSpecialChars: hasSpecialChars,
-  hasNumbers: hasNumbers,
-  hasLowerCaseChars: hasLowerCaseChars,
-  hasUpperCaseChars: hasUpperCaseChars
+  hasSpecialCharecters: hasSpecialCharecters,
+  hasNumericCharecters: hasNumericCharecters,
+  hasLowerCaseCharecters: hasLowerCaseCharecters,
+  hasUpperCaseCharecters: hasUpperCaseCharecters
 }
 
-console.log(passwordOptions)
+return passwordOptions;
 
 }
 
@@ -146,6 +146,48 @@ function getRandom(arr) {
 // Function to generate password with user input
 function generatePassword() {
 let options = getPasswordOptions();
+console.log(options);
+
+let result = []
+
+let possibleCharecter = []
+
+let guarteneedCharecter = []
+
+if(options.hasSpecialCharecters) {
+  possibleCharecter = possibleCharecter.concat(specialCharacters);
+  guarteneedCharecter.push(getRandom(specialCharacters))
+}
+
+if(options.hasLowerCaseCharecters) {
+  possibleCharecter = possibleCharecter.concat(lowerCasedCharacters);
+  guarteneedCharecter.push(getRandom(lowerCasedCharacters))
+}
+
+
+if(options.hasUpperCaseCharecters) {
+  possibleCharecter = possibleCharecter.concat(upperCasedCharacters);
+  guarteneedCharecter.push(getRandom(upperCasedCharacters))
+}
+
+if(options.hasNumericCharecters) {
+  possibleCharecter = possibleCharecter.concat(numericCharacters);
+  guarteneedCharecter.push(getRandom(numericCharacters))
+}
+
+
+for(let i = 0; i < options.length; i++) {
+var generated = getRandom(possibleCharecter);
+console.log(generated)
+result.push(generated);
+}
+
+for(let i = 0; i < guarteneedCharecter.length; i++) {
+  result[i] = guarteneedCharecter[i]
+}
+
+console.log(result);
+
 }
 
 // Get references to the #generate element
