@@ -94,9 +94,45 @@ function getPasswordOptions() {
 let length = parseInt(
   prompt("How many charecters would you like your password to have?")
 )
-alert(length);
 
+if(isNaN(length) === true){
+  alert('Password length must be provided as a number')
+}
+
+if(length >= 10) {
+  alert('Password length must be at least 10 charecters')
+}
  
+if(length <= 65){
+  alert('password length must be less than or equal to 64 charecters =')
+}
+
+let hasSpecialChars = confirm('Click Ok to confim if you want your password to include special charecters')
+
+let hasNumbers = confirm('Click Ok to confim if you want your password to include numbers')
+
+let hasLowerCaseChars = confirm('Click Ok to confim if you want your password to lower case letters')
+
+let hasUpperCaseChars = confirm('Click Ok to confim if you want your password to upper case letters')
+
+if(hasSpecialChars === false &&
+  hasNumbers === false &&
+  hasLowerCaseChars === false &&
+  hasUpperCaseChars === false ) {
+    alert('Please select at least one charecter type');
+    return;
+  }
+
+let passwordOptions = {
+  length: length,
+  hasSpecialChars: hasSpecialChars,
+  hasNumbers: hasNumbers,
+  hasLowerCaseChars: hasLowerCaseChars,
+  hasUpperCaseChars: hasUpperCaseChars
+}
+
+console.log(passwordOptions)
+
 }
 
 // Function for getting a random element from an array
