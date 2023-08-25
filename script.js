@@ -104,7 +104,7 @@ if(length >= 8) {
 }
  
 if(length <= 128){
-  alert('password length must be less than or equal to 128 charecters =')
+  alert('password length must be less than or equal to 128 charecters')
 }
 
 let hasSpecialCharecters = confirm('Click Ok to confim if you want your password to include special charecters')
