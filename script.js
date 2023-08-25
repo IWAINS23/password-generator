@@ -175,6 +175,7 @@ if(options.hasNumericCharecters) {
   guarteneedCharecter.push(getRandom(numericCharacters))
 }
 
+console.log(possibleCharecter)
 
 for(let i = 0; i < options.length; i++) {
 var generated = getRandom(possibleCharecter);
@@ -187,6 +188,8 @@ for(let i = 0; i < guarteneedCharecter.length; i++) {
 }
 
 console.log(result);
+
+return result.join('')
 
 }
 
